@@ -2,22 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practices/practice/custom_class.dart';
 import 'package:flutter_practices/practice/identity_card.dart';
 import 'practice/identity_card.dart';
+import 'package:flutter_practices/practice/card_temp.dart';
 
 void main() {
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme:ThemeData(
+        brightness: Brightness.dark,
+        backgroundColor: Colors.amber,
+        splashColor: Colors.yellow,
+
+        ),
       home: mapList(),
+
     ),
   );
 }
-
 //#############################################################################################################
 //to print list through map
 class mapList extends StatefulWidget {
   @override
   _mapListState createState() => _mapListState();
 }
-
 class _mapListState extends State<mapList> {
   List<S_data> data = [
     S_data(name: 'Aneeza Zafar', rollnum: '0261-BSCS-18'),
@@ -26,70 +33,46 @@ class _mapListState extends State<mapList> {
     S_data(name: 'Mahnoor Tariq', rollnum: '0227-BSCS-18'),
   ];
   List<String> num = ['1', '2', '3', '4'];
+  //###############################
+  //extracting widget
   Widget cdata(e) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 50),
-      child: Card(
-        margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
-        child: Padding(
-          padding: EdgeInsets.all(12),
-          child: Row(
-            children: [
-              Text(
-                e.name,
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Text(
-                e.rollnum,
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return cardTemplate(e:e);  // extracting widget(it removes all the code that i write in this widget)
   }
-
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
-          Column(
-            children: num.map((e) {
-              return Text(
-                e,
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              );
-            }).toList(),
-          ),
+          // Column(
+          //   children: num.map((e) {
+          //     return Text(
+          //       e, // this e is containing the item that has to be print
+          //       style: TextStyle(
+          //         fontSize: 18,
+          //       ),
+          //     );
+          //   }).toList(),
+          // ),
           Column(
             children: data.map((e) => cdata(e)).toList(),
           ),
-          Column(
-            children: data.map((e) {
-              return Text(
-                e.name,
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              );
-            }).toList(),
-          ),
+          // Column(
+          //   children: data.map((e) {
+          //     return Text(
+          //       e.name,
+          //       style: TextStyle(
+          //         fontSize: 18,
+          //       ),
+          //     );
+          //   }).toList(),
+          // ),
         ],
       ),
     );
   }
 }
+
+
 //##################################################################################################################
 //to call and perform actions on custom class
 // class dataList extends StatefulWidget {

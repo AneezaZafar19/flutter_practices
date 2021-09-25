@@ -6,13 +6,15 @@ class cardTemplate extends StatelessWidget {
   // is written in this build widget that is built_in method
   final S_data e; // b/c we don't allowed to chnge data in stless widget overtime so we should declare variables
 //final other wise there is error
+  final Function delete; //function is the data type
   cardTemplate({
-    this.e
+    this.e,
+    this.delete,
   });
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 50),
+      padding: EdgeInsets.symmetric(horizontal: 100),
       child: Card(
         margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
         child: Padding(
@@ -34,6 +36,17 @@ class cardTemplate extends StatelessWidget {
                   fontSize: 18,
                 ),
               ),
+              SizedBox(
+                    height: 50,
+                    width: 50,
+                  ),
+              FlatButton.icon(
+                    color: Colors.amber,
+                    onPressed: delete,
+                    label: Text('Delete'),
+                    icon: Icon(Icons.delete),
+                  ),
+
             ],
           ),
         ),

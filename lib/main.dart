@@ -35,9 +35,10 @@ class _mapListState extends State<mapList> {
   List<String> num = ['1', '2', '3', '4'];
   //###############################
   //extracting widget
-  Widget cdata(e) {
-    return cardTemplate(e:e);  // extracting widget(it removes all the code that i write in this widget)
-  }
+  // Widget cdata(e) {
+  //   return cardTemplate(e:e);  // extracting widget(it removes all the code that i write in this widget)
+  // }// we don't need this method as we make cardtemplate an widget so we can delete this and directly call cardtemplate method where we call
+  // cdata method in printing all the data
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,8 +54,19 @@ class _mapListState extends State<mapList> {
           //     );
           //   }).toList(),
           // ),
+          // Column(
+          //   children: data.map((e) => cdata(e)).toList(),
+          // ),
+          //to delete the whole line when we click on delete we will make a function here that delete it from list
           Column(
-            children: data.map((e) => cdata(e)).toList(),
+            children: data.map((e) => cardTemplate(
+                e:e,
+              delete:(){
+                  setState((){
+                   data.remove(e);
+            });
+            },
+            )).toList(),
           ),
           // Column(
           //   children: data.map((e) {

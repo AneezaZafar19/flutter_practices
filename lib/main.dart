@@ -59,11 +59,11 @@ class _mapListState extends State<mapList> {
           // ),
           //to delete the whole line when we click on delete we will make a function here that delete it from list
           Column(
-            children: data.map((e) => cardTemplate(
-                e:e,
+            children: data.map((n) => cardTemplate(
+                e:n,  // card template k constructor ma e ma n value ja rae ha or delete ma delete function ja ra h
               delete:(){
                   setState((){
-                   data.remove(e);
+                   data.remove(n);
             });
             },
             )).toList(),
